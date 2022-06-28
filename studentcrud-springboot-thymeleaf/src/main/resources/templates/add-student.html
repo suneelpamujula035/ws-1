@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <title>Add Student</title>
+</head>
+<body>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<a href="/showListOfStudents">Home</a>
+<div class="container my-5">
+    <h3> Add Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post">
+                    <div class="row">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group col-md-8">
+                            <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" />
+                            <label for="name" class="col-form-label">Name:</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+                            <label for="email" class="col-form-label">Email:</label> <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="phoneNumber" class="col-form-label">Phone Number:</label> <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber" placeholder="PhoneNumber">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errorclass="error" th:errors="*{dateOfBirth}" />
+                            <label for="dateOfBirth" class="col-form-label">Date of Birth:</label> <input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth">
+                        </div>
+
+<!--                        <div class="form-group col-md-8">-->
+<!--                            <label for="profession" class="col-form-label">Profession:</label></br>-->
+<!--                            <select th:field="*{profession}" id="profession">-->
+<!--                                <option th:each="p: ${professionsList}" th:value="${p}" th:text="${p}"></option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
+                        <div class="form-group col-md-8">
+                            <label for="profession" class="col-form-label">Profession:</label></br>
+                            <select th:field="*{profession}" id="profession">
+                                <optgroup label="Select Profession">
+                                    <option value="Developer">Developer</option>
+                                    <option value="Tester">Tester</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Designer">Designer</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label">Hobbies:</label></br>
+                            <input type="checkbox" th:field="*{hobbies}" value="Reading books">Reading books<br>
+                            <input type="checkbox" th:field="*{hobbies}" value="Movies">Movies<br>
+                            <input type="checkbox" th:field="*{hobbies}" value="Music">Music<br>
+                            <input type="checkbox" th:field="*{hobbies}" value="Riding Bikes">Riding Bikes<br>
+                            <input type="checkbox" th:field="*{hobbies}" value="Drawing">Drawing<br>
+
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="married" class="col-form-label">Married?:</label> <input type="checkbox" th:field="*{married}" id="married" th:checked="${student.married}">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label">Gender:</label><br>
+                            <input type="radio" th:field="*{gender}" value="Male"/>Male
+                            <input type="radio" th:field="*{gender}" value="Female"/>Female
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label">Notes:</label><br>
+                            <textarea rows="5" cols="25" th:field="*{notes}"></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+
+                        <div class="form-group col-md-8"></div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

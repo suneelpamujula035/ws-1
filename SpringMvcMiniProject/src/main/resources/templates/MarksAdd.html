@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Add Marks</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h3>Student Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Add Marks</p>
+
+    <form th:action="@{/marks/save}" th:object="${marksAdd}" method="POST">
+
+        <p th:if="${#fields.hasErrors('maths')}" th:errorclass="error" th:errors="*{maths}" />
+        Maths:-<input type="text" th:field="*{maths}" class="form-control mb-4 col-4">
+
+        <p th:if="${#fields.hasErrors('science')}" th:errorclass="error" th:errors="*{science}" />
+        Science:-<input type="text" th:field="*{science}" class="form-control mb-4 col-4">
+
+        <p th:if="${#fields.hasErrors('studentId')}" th:errorclass="error" th:errors="*{studentId}" />
+        Student Enr:-<input type="text" th:field="*{studentId}" class="form-control mb-4 col-4" placeholder="studentId">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+        <input type="hidden" id="id">
+
+    </form>
+
+
+    <hr>
+    <a href="/marks/list">Back to Marks List</a>
+
+</div>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="mathsCheat" class="com.demo.loosecoupling1.MathsCheat"></bean>
+<bean id="scienceCheat" class="com.demo.loosecoupling1.ScienceCheat"></bean>
+<bean id="englishCheat" class="com.demo.loosecoupling1.EnglishCheat"></bean>
+
+<bean id="guru" class="com.demo.loosecoupling1.Student">
+<property name="ch" ref="englishCheat"></property>
+</bean>
+</beans>

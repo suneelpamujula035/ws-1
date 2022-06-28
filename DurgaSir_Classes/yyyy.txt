@@ -1,0 +1,6 @@
+#success
+#Sun Mar 20 10:26:05 IST 2022
+venky=9999
+nag=9988
+pwd=tiger123
+user=scott
